@@ -1,0 +1,11 @@
+com\server\bebidasGM\service\InventarioServiceImpl.class
+com\server\bebidasGM\model\Inventario.class
+com\server\bebidasGM\repository\InventarioRepository.class
+com\server\bebidasGM\ServletInitializer.class
+com\server\bebidasGM\service\ProductoService.class
+com\server\bebidasGM\repository\ProductoRepository.class
+com\server\bebidasGM\service\InventarioService.class
+com\server\bebidasGM\model\Producto.class
+com\server\bebidasGM\service\ProductoServiceImpl.class
+com\server\bebidasGM\BebidasGmApplication.class
+com\server\bebidasGM\controller\BebidasGmController.class
