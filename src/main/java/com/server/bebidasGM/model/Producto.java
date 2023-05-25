@@ -1,26 +1,40 @@
 package com.server.bebidasGM.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
-import java.sql.Blob;
+import java.io.Serializable;
+import java.util.Date;
+
 
 @Entity
 @Table(name = "PRODUCTOS")
-public class Producto {
+public class Producto implements Serializable {
 
   @Id
   @Column(name="id_producto")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
-  private String nombre_producto;
-  private String descripcion_producto;
-  private long precio_producto;
+  @Column(name="nombre_producto")
+  private String nombreProducto;
+  @Column(name="descripcion_producto")
+  private String descripcionProducto;
+  @Column(name="precio_producto")
+  private long precioProducto;
+  @Column(name="existencias")
   private long  existencias;
+  @Column(name="categoria")
   private String categoria;
   @Lob
+  @Column(name="imagen")
   private byte[] imagen;
-  private String en_oferta;
-  private String fecha_creacion;
+  @Column(name="en_oferta")
+  private String enOferta;
+
+  @Column(name = "fecha_creacion")
+  @Temporal(TemporalType.DATE)
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "DD-MON-YY HH:MI:SS")
+  private String fechaCreacion;
 
   /*
   id_producto NUMBER PRIMARY KEY,
@@ -37,18 +51,20 @@ public class Producto {
   public Producto() {
   }
 
-  public Producto(long id, String nombre_producto, String descripcion_producto, long precio_producto, long existencias, String categoria, byte[] imagen, String en_oferta, String fecha_creacion) {
+  public Producto(long id, String nombreProducto, String descripcionProducto, long precioProducto, long existencias, String categoria, byte[] imagen, String enOferta, String fechaCreacion) {
     this.id = id;
-    this.nombre_producto = nombre_producto;
-    this.descripcion_producto = descripcion_producto;
-    this.precio_producto = precio_producto;
+    this.nombreProducto = nombreProducto;
+    this.descripcionProducto = descripcionProducto;
+    this.precioProducto = precioProducto;
     this.existencias = existencias;
     this.categoria = categoria;
     this.imagen = imagen;
-    this.en_oferta = en_oferta;
-    this.fecha_creacion = fecha_creacion;
+    this.enOferta = enOferta;
+    this.fechaCreacion = fechaCreacion;
   }
 
+  @SequenceGenerator(name = "producto_seq", sequenceName = "incProductos", allocationSize = 1)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "producto_seq")
   public long getId() {
     return id;
   }
@@ -57,28 +73,28 @@ public class Producto {
     this.id = id;
   }
 
-  public String getNombre_producto() {
-    return nombre_producto;
+  public String getNombreProducto() {
+    return nombreProducto;
   }
 
-  public void setNombre_producto(String nombre_producto) {
-    this.nombre_producto = nombre_producto;
+  public void setNombreProducto(String nombreProducto) {
+    this.nombreProducto = nombreProducto;
   }
 
-  public String getDescripcion_producto() {
-    return descripcion_producto;
+  public String getDescripcionProducto() {
+    return descripcionProducto;
   }
 
-  public void setDescripcion_producto(String descripcion_producto) {
-    this.descripcion_producto = descripcion_producto;
+  public void setDescripcionProducto(String descripcionProducto) {
+    this.descripcionProducto = descripcionProducto;
   }
 
-  public long getPrecio_producto() {
-    return precio_producto;
+  public long getPrecioProducto() {
+    return precioProducto;
   }
 
-  public void setPrecio_producto(long precio_producto) {
-    this.precio_producto = precio_producto;
+  public void setPrecioProducto(long precioProducto) {
+    this.precioProducto = precioProducto;
   }
 
   public long getExistencias() {
@@ -105,19 +121,19 @@ public class Producto {
     this.imagen = imagen;
   }
 
-  public String getEn_oferta() {
-    return en_oferta;
+  public String getEnOferta() {
+    return enOferta;
   }
 
-  public void setEn_oferta(String en_oferta) {
-    this.en_oferta = en_oferta;
+  public void setEnOferta(String enOferta) {
+    this.enOferta = enOferta;
   }
 
-  public String getFecha_creacion() {
-    return fecha_creacion;
+  public String getFechaCreacion() {
+    return fechaCreacion;
   }
 
-  public void setFecha_creacion(String fecha_creacion) {
-    this.fecha_creacion = fecha_creacion;
+  public void setFechaCreacion(String fechaCreacion) {
+    this.fechaCreacion = fechaCreacion;
   }
 }
