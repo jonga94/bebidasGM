@@ -20,14 +20,7 @@ public class DetallePedidoServiceImpl implements DetallePedidoService{
   @Override
   @Transactional
   public ArrayList<DetallePedido> findAll() {
-    System.out.println("Entrando a detallePedido");
     ArrayList<DetallePedido> lista = (ArrayList<DetallePedido>) detallePedidoRepository.findAll();
-    for (DetallePedido detalle: lista) {
-        Long idProducto = detalle.getIdProducto();
-        if (idProducto == null){
-          idProducto = 0L;
-        }
-    }
     return lista;
   }
 

@@ -37,7 +37,7 @@ public class Clientes implements Serializable {
   private String telefonoCliente;
 
   @Column(name="correo_electronico")
-  private String correoElectronico;
+  private String password;
 
   @Column(name="fecha_registro")
   @Temporal(TemporalType.DATE)
@@ -53,7 +53,7 @@ public class Clientes implements Serializable {
     this.apellidosCliente = apellidosCliente;
     this.direccionCliente = direccionCliente;
     this.telefonoCliente = telefonoCliente;
-    this.correoElectronico = correoElectronico;
+    this.password = correoElectronico;
     this.fechaRegistro = fechaRegistro;
   }
 
@@ -99,12 +99,12 @@ public class Clientes implements Serializable {
     this.telefonoCliente = telefonoCliente;
   }
 
-  public String getCorreoElectronico() {
-    return correoElectronico;
+  public String getPassword() {
+    return password;
   }
 
-  public void setCorreoElectronico(String correoElectronico) {
-    this.correoElectronico = correoElectronico;
+  public void setPassword(String password) {
+    this.password = password;
   }
 
   public String getFechaRegistro() {
